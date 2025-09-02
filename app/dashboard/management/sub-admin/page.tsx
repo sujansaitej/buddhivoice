@@ -309,7 +309,12 @@ export default function SubAdminPage() {
       // Add new sub admin
       const newSubAdmin: SubAdmin = {
         id: Date.now().toString(),
-        ...data,
+        name: data.name || '',
+        email: data.email || '',
+        phone: data.phone || '',
+        department: data.department || '',
+        role: data.role || '',
+        status: data.status || 'active',
         lastLogin: new Date().toISOString(),
         createdAt: new Date().toISOString().split('T')[0],
         permissions: ['basic_access']

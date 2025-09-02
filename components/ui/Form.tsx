@@ -25,6 +25,7 @@ interface FormProps {
   submitText?: string
   submitLabel?: string
   readOnly?: boolean
+  loading?: boolean
 }
 
 export default function Form({ 
@@ -36,7 +37,8 @@ export default function Form({
   submitButtonText = 'Submit',
   submitText,
   submitLabel,
-  readOnly = false
+  readOnly = false,
+  loading = false
 }: FormProps) {
   const [formData, setFormData] = useState(() => {
     const data = { ...initialData }

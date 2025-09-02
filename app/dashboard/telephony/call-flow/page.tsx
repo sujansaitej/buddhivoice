@@ -375,11 +375,16 @@ export default function CallFlowPage() {
       // Add new flow
       const newFlow: CallFlow = {
         id: Date.now().toString(),
-        ...data,
+        name: data.name || '',
+        description: data.description || '',
+        trigger: data.trigger || '',
+        status: data.status || 'draft',
+        priority: data.priority || 'medium',
         steps: 0,
         createdAt: new Date().toISOString().split('T')[0],
         lastModified: new Date().toISOString().split('T')[0],
         createdBy: 'Current User',
+        assignedTo: data.assignedTo || '',
         callsProcessed: 0
       }
       setCallFlows(prev => [...prev, newFlow])

@@ -229,13 +229,12 @@ export default function DepartmentPage() {
   const formFields: Array<{
     name: string
     label: string
-    type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date' | 'time' | 'tel' | 'datetime-local' | 'time' | 'tel' | 'datetime-local'
+    type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date' | 'time' | 'tel' | 'datetime-local'
     required?: boolean
     placeholder?: string
     value?: any
     options?: Array<{ value: string; label: string }>
     rows?: number
-    validation?: (value: string) => string | null
     validation?: (value: string) => string | null
   }> = [
     {
@@ -390,10 +389,17 @@ export default function DepartmentPage() {
       // Add new department
       const newDepartment: Department = {
         id: Date.now().toString(),
-        ...data,
-        employeeCount: parseInt(data.employeeCount),
-        budget: parseInt(data.budget),
-        createdAt: new Date().toISOString().split('T')[0]
+        name: data.name || '',
+        description: data.description || '',
+        manager: data.manager || '',
+        managerEmail: data.managerEmail || '',
+        managerPhone: data.managerPhone || '',
+        location: data.location || '',
+        employeeCount: parseInt(data.employeeCount) || 0,
+        budget: parseInt(data.budget) || 0,
+        status: data.status || 'active',
+        createdAt: new Date().toISOString().split('T')[0],
+        costCenter: data.costCenter || ''
       }
       setDepartments(prev => [...prev, newDepartment])
     }

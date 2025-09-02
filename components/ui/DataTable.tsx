@@ -16,6 +16,7 @@ interface DataTableProps {
   onEdit?: (item: any) => void
   onDelete?: (item: any) => void
   onAdd?: () => void
+  onView?: (item: any) => void
   actions?: Array<{
     icon: any
     label: string
@@ -32,6 +33,7 @@ export default function DataTable({
   onEdit, 
   onDelete, 
   onAdd,
+  onView,
   actions = [],
   renderCell,
   isDarkMode = true,

@@ -456,10 +456,20 @@ export default function UserPage() {
       // Add new user
       const newUser: User = {
         id: Date.now().toString(),
-        ...data,
+        name: data.name || '',
+        email: data.email || '',
+        phone: data.phone || '',
+        department: data.department || '',
+        role: data.role || '',
+        position: data.position || '',
+        status: data.status || 'active',
         lastLogin: 'Never',
         createdAt: new Date().toISOString().split('T')[0],
-        permissions: ['basic_access']
+        permissions: ['basic_access'],
+        employeeId: data.employeeId || '',
+        manager: data.manager || '',
+        location: data.location || '',
+        joinDate: data.joinDate || new Date().toISOString().split('T')[0]
       }
       setUsers(prev => [...prev, newUser])
     }

@@ -405,9 +405,15 @@ export default function DIDNumbersPage() {
       // Add new DID
       const newDID: DIDNumber = {
         id: Date.now().toString(),
-        ...data,
-        monthlyCost: parseInt(data.monthlyCost),
-        setupCost: parseInt(data.setupCost),
+        number: data.number || '',
+        country: data.country || '',
+        city: data.city || '',
+        provider: data.provider || '',
+        type: data.type || 'local',
+        status: data.status || 'pending',
+        monthlyCost: parseInt(data.monthlyCost) || 0,
+        setupCost: parseInt(data.setupCost) || 0,
+        assignedTo: data.assignedTo || '',
         createdAt: new Date().toISOString().split('T')[0],
         features: ['Voice']
       }
