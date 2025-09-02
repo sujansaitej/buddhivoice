@@ -6,11 +6,12 @@ import { motion } from 'framer-motion'
 interface FormField {
   name: string
   label: string
-  type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox'
+  type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date'
   required?: boolean
   placeholder?: string
   options?: Array<{ value: string; label: string }>
   rows?: number
+  value?: any
 }
 
 interface FormProps {
@@ -30,7 +31,15 @@ export default function Form({
   submitButtonText = 'Submit',
   readOnly = false
 }: FormProps) {
-  const [formData, setFormData] = useState(initialData)
+  const [formData, setFormData] = useState(() => {
+    const data = { ...initialData }
+    fields.forEach(field => {
+      if (field.value !== undefined) {
+        data[field.name] = field.value
+      }
+    })
+    return data
+  })
   const [errors, setErrors] = useState<{[key: string]: string}>({})
 
   const handleChange = (name: string, value: any) => {
