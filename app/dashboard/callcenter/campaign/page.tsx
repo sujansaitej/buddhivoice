@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Plus, Play, Pause, Stop, Edit, Trash2, Search, Filter, Target, Users, Phone, Clock, BarChart3 } from 'lucide-react'
+import { Plus, Play, Pause, Square, Edit, Trash2, Search, Filter, Target, Users, Phone, Clock, BarChart3 } from 'lucide-react'
 import DataTable from '../../../../components/ui/DataTable'
 import Modal from '../../../../components/ui/Modal'
 import Form from '../../../../components/ui/Form'
@@ -159,8 +159,8 @@ export default function CampaignPage() {
     console.log('Pause campaign:', id)
   }
 
-  const handleStop = (id: string) => {
-    console.log('Stop campaign:', id)
+  const handleSquare = (id: string) => {
+    console.log('Square campaign:', id)
   }
 
   const getSuccessRate = (successful: number, contacted: number) => {
@@ -265,13 +265,13 @@ export default function CampaignPage() {
           )}
           {(row.status === 'active' || row.status === 'paused') && (
             <button
-              onClick={() => handleStop(row.id)}
+              onClick={() => handleSquare(row.id)}
               className={`p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 ${
                 isDarkMode ? 'text-white' : 'text-gray-600'
               }`}
-              title="Stop Campaign"
+              title="Square Campaign"
             >
-              <Stop className="w-4 h-4" />
+              <Square className="w-4 h-4" />
             </button>
           )}
           <button
@@ -371,7 +371,7 @@ export default function CampaignPage() {
         { value: 'active', label: 'Active' },
         { value: 'paused', label: 'Paused' },
         { value: 'completed', label: 'Completed' },
-        { value: 'stopped', label: 'Stopped' }
+        { value: 'stopped', label: 'Squareped' }
       ]
     },
     {
@@ -502,7 +502,7 @@ export default function CampaignPage() {
               <option value="active">Active</option>
               <option value="paused">Paused</option>
               <option value="completed">Completed</option>
-              <option value="stopped">Stopped</option>
+              <option value="stopped">Squareped</option>
             </select>
             <select
               value={filterType}
