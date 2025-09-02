@@ -20,6 +20,7 @@ interface DataTableProps {
     label: string
     onClick: (item: any) => void
   }>
+  renderCell?: (key: string, value: any, row: any) => any
   isDarkMode?: boolean
 }
 
@@ -29,6 +30,7 @@ export default function DataTable({
   onEdit, 
   onDelete, 
   actions = [],
+  renderCell,
   isDarkMode = true 
 }: DataTableProps) {
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null)
@@ -128,7 +130,7 @@ export default function DataTable({
               >
                 {columns.map((column) => (
                   <td key={column.key} className="py-3 px-4">
-                    {item[column.key]}
+                    {renderCell ? renderCell(column.key, item[column.key], item) : item[column.key]}
                   </td>
                 ))}
                 {actions.length > 0 && (
