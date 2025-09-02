@@ -230,9 +230,11 @@ export default function DepartmentPage() {
     name: string
     label: string
     type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date'
-    required: boolean
-    value: any
+    required?: boolean
+    placeholder?: string
+    value?: any
     options?: Array<{ value: string; label: string }>
+    rows?: number
   }> = [
     {
       name: 'name',
