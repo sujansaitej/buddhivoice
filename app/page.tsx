@@ -62,15 +62,15 @@ export default function Home() {
       <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <Hero isDarkMode={isDarkMode} />
       <ClientCarousel isDarkMode={isDarkMode} />
-      <ContactForm isDarkMode={isDarkMode} />
-      <Dashboard isDarkMode={isDarkMode} />
-      <TelephonySection isDarkMode={isDarkMode} />
-      <CallCenterSection isDarkMode={isDarkMode} />
-      <LeadManagementSection isDarkMode={isDarkMode} />
-      <AIIVRSection isDarkMode={isDarkMode} />
-      <BYOTSection isDarkMode={isDarkMode} />
-      <WhatsAppSection isDarkMode={isDarkMode} />
-      <VirtualNumbersSection isDarkMode={isDarkMode} />
+      <ContactForm />
+      <Dashboard />
+      <TelephonySection />
+      <CallCenterSection />
+      <LeadManagementSection />
+      <AIIVRSection />
+      <BYOTSection />
+      <WhatsAppSection />
+      <VirtualNumbersSection />
       <Footer isDarkMode={isDarkMode} />
     </main>
   )

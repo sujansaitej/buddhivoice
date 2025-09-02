@@ -15,6 +15,7 @@ interface DataTableProps {
   columns: Column[]
   onEdit?: (item: any) => void
   onDelete?: (item: any) => void
+  onAdd?: () => void
   actions?: Array<{
     icon: any
     label: string
@@ -22,6 +23,7 @@ interface DataTableProps {
   }>
   renderCell?: (key: string, value: any, row: any) => any
   isDarkMode?: boolean
+  addButtonText?: string
 }
 
 export default function DataTable({ 
@@ -29,9 +31,11 @@ export default function DataTable({
   columns, 
   onEdit, 
   onDelete, 
+  onAdd,
   actions = [],
   renderCell,
-  isDarkMode = true 
+  isDarkMode = true,
+  addButtonText = 'Add New'
 }: DataTableProps) {
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
@@ -77,22 +81,32 @@ export default function DataTable({
   return (
     <div className="space-y-4">
       {/* Search and Filter Bar */}
-      <div className="flex items-center space-x-4">
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent ${
-              isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white border-gray-300 text-gray-900'
-            }`}
-          />
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+          <div className="relative flex-1 max-w-md">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent ${
+                isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white border-gray-300 text-gray-900'
+              }`}
+            />
+          </div>
+          <button className={`p-2 rounded-lg ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} transition-colors`}>
+            <Filter className={`w-5 h-5 ${isDarkMode ? 'text-white' : 'text-gray-600'}`} />
+          </button>
         </div>
-        <button className={`p-2 rounded-lg ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} transition-colors`}>
-          <Filter className={`w-5 h-5 ${isDarkMode ? 'text-white' : 'text-gray-600'}`} />
-        </button>
+        {onAdd && (
+          <button
+            onClick={onAdd}
+            className="btn-primary"
+          >
+            {addButtonText}
+          </button>
+        )}
       </div>
 
       {/* Table */}

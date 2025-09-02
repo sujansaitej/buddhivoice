@@ -151,7 +151,7 @@ export default function IntegrationPage() {
           { label: 'Total Integrations', value: integrations.length.toString(), icon: Plug, color: 'text-blue-500' },
           { label: 'Connected', value: connectedCount.toString(), icon: CheckCircle, color: 'text-green-500' },
           { label: 'Errors', value: errorCount.toString(), icon: AlertCircle, color: 'text-red-500' },
-          { label: 'Types', value: [...new Set(integrations.map(i => i.type))].length.toString(), icon: Settings, color: 'text-purple-500' }
+          { label: 'Types', value: Array.from(new Set(integrations.map(i => i.type))).length.toString(), icon: Settings, color: 'text-purple-500' }
         ].map((stat, index) => (
           <motion.div
             key={stat.label}

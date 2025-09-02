@@ -214,7 +214,7 @@ export default function LeadManagementSection() {
                           // Simple drag and drop logic
                           const target = e.target as HTMLElement
                           const rect = target.getBoundingClientRect()
-                          const x = e.clientX - rect.left
+                          const x = (e as MouseEvent).clientX - rect.left
                           const columnWidth = rect.width
                           const columnIndex = Math.floor(x / columnWidth)
                           const statuses = Object.keys(statusConfig)

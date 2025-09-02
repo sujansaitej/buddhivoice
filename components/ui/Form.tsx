@@ -6,12 +6,13 @@ import { motion } from 'framer-motion'
 interface FormField {
   name: string
   label: string
-  type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date'
+  type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date' | 'time' | 'tel' | 'datetime-local'
   required?: boolean
   placeholder?: string
   options?: Array<{ value: string; label: string }>
   rows?: number
   value?: any
+  validation?: (value: string) => string | null
 }
 
 interface FormProps {
@@ -21,6 +22,8 @@ interface FormProps {
   onCancel?: () => void
   isDarkMode?: boolean
   submitButtonText?: string
+  submitText?: string
+  submitLabel?: string
   readOnly?: boolean
 }
 
@@ -31,6 +34,8 @@ export default function Form({
   onCancel,
   isDarkMode = true,
   submitButtonText = 'Submit',
+  submitText,
+  submitLabel,
   readOnly = false
 }: FormProps) {
   const [formData, setFormData] = useState(() => {
@@ -45,10 +50,10 @@ export default function Form({
   const [errors, setErrors] = useState<{[key: string]: string}>({})
 
   const handleChange = (name: string, value: any) => {
-    setFormData(prev => ({ ...prev, [name]: value }))
+    setFormData((prev: any) => ({ ...prev, [name]: value }))
     // Clear error when user starts typing
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }))
+      setErrors((prev: any) => ({ ...prev, [name]: '' }))
     }
   }
 
@@ -179,7 +184,7 @@ export default function Form({
             type="submit"
             className="btn-primary flex-1"
           >
-            {submitButtonText}
+{submitText || submitLabel || submitButtonText}
           </button>
           {onCancel && (
             <button
