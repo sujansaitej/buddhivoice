@@ -181,7 +181,7 @@ export default function BlackListPage() {
     return value
   }
 
-  const formFields = [
+  const formFields: Array<{n    name: stringn    label: stringn    type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date'n    required: booleann    value: anyn    options?: Array<{ value: string; label: string }>n  }> = [
     {
       name: 'number',
       label: 'Number/IP Address',
