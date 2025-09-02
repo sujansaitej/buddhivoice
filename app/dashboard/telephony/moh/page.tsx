@@ -165,7 +165,14 @@ export default function MOHPage() {
     return value
   }
 
-  const formFields: Array<{n    name: stringn    label: stringn    type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date'n    required: booleann    value: anyn    options?: Array<{ value: string; label: string }>n  }> = [
+  const formFields: Array<{
+    name: string
+    label: string
+    type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date'
+    required: boolean
+    value: any
+    options?: Array<{ value: string; label: string }>
+  }> = [
     {
       name: 'name',
       label: 'MOH Name',

@@ -136,7 +136,14 @@ export default function DataFormsPage() {
     { key: 'lastModified', label: 'Last Modified', sortable: true }
   ]
 
-  const formFields: Array<{n    name: stringn    label: stringn    type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date'n    required: booleann    value: anyn    options?: Array<{ value: string; label: string }>n  }> = [
+  const formFields: Array<{
+    name: string
+    label: string
+    type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date'
+    required: boolean
+    value: any
+    options?: Array<{ value: string; label: string }>
+  }> = [
     { name: 'name', label: 'Form Name', type: 'text', required: true },
     { name: 'type', label: 'Form Type', type: 'select', required: true, options: [
       { value: 'Lead Form', label: 'Lead Form' },
