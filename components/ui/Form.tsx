@@ -18,6 +18,7 @@ interface FormProps {
   fields: FormField[]
   initialData?: any
   onSubmit: (data: any) => void
+  onCancel?: () => void
   isDarkMode?: boolean
   submitButtonText?: string
   readOnly?: boolean
@@ -27,6 +28,7 @@ export default function Form({
   fields, 
   initialData = {}, 
   onSubmit, 
+  onCancel,
   isDarkMode = true,
   submitButtonText = 'Submit',
   readOnly = false
@@ -179,6 +181,19 @@ export default function Form({
           >
             {submitButtonText}
           </button>
+          {onCancel && (
+            <button
+              type="button"
+              onClick={onCancel}
+              className={`px-4 py-2 rounded-lg border transition-colors ${
+                isDarkMode 
+                  ? 'border-gray-600 text-gray-300 hover:bg-gray-700' 
+                  : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              Cancel
+            </button>
+          )}
         </motion.div>
       )}
     </form>
