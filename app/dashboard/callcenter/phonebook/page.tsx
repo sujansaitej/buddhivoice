@@ -296,12 +296,13 @@ export default function PhonebookPage() {
   const formFields: Array<{
     name: string
     label: string
-    type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date'
+    type: 'text' | 'email' | 'password' | 'number' | 'select' | 'textarea' | 'checkbox' | 'date' | 'time' | 'tel' | 'datetime-local'
     required?: boolean
     placeholder?: string
     value?: any
     options?: Array<{ value: string; label: string }>
     rows?: number
+    validation?: (value: string) => string | null
   }> = [
     {
       name: 'name',
